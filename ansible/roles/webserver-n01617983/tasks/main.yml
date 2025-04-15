@@ -1,0 +1,17 @@
+---
+- name: Install Apache
+  package:
+    name: httpd
+    state: present
+
+- name: Copy index.html with VM-specific content
+  copy:
+    src: "{{ inventory_hostname }}.html"
+    dest: /var/www/html/index.html
+    mode: '0444'
+  notify: restart apache
+
+- name: Enable Apache at boot
+  service:
+    name: httpd
+    enabled: yes

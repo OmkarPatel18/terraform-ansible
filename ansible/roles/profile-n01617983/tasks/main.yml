@@ -1,0 +1,14 @@
+---
+- name: Append test block to /etc/profile
+  lineinfile:
+    path: /etc/profile
+    line: "#Test block added by Ansible……n01617983"
+    state: present
+    create: yes
+
+- name: Set session timeout in /etc/profile
+  lineinfile:
+    path: /etc/profile
+    line: "export TMOUT=1500"
+    state: present
+    create: yes
